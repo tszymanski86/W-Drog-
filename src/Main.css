@@ -1,0 +1,15 @@
+.sectionTitle {
+    text-align: center;
+    margin: 10px;
+}
+
+li {
+    list-style-type: none;
+    margin: 5px;
+}
+
+@media only screen and (max-width: 650px) {
+    .sectionTitle {
+        display: none;
+    }
+}

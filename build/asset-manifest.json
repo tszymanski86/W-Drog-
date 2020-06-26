@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/W-Droge/static/css/main.4df656e6.chunk.css",
+    "main.js": "/W-Droge/static/js/main.a333ce92.chunk.js",
+    "main.js.map": "/W-Droge/static/js/main.a333ce92.chunk.js.map",
+    "runtime-main.js": "/W-Droge/static/js/runtime-main.12aacbe1.js",
+    "runtime-main.js.map": "/W-Droge/static/js/runtime-main.12aacbe1.js.map",
+    "static/js/2.a5ecab37.chunk.js": "/W-Droge/static/js/2.a5ecab37.chunk.js",
+    "static/js/2.a5ecab37.chunk.js.map": "/W-Droge/static/js/2.a5ecab37.chunk.js.map",
+    "index.html": "/W-Droge/index.html",
+    "precache-manifest.d52d82ade82377c1bfcde22a229860fe.js": "/W-Droge/precache-manifest.d52d82ade82377c1bfcde22a229860fe.js",
+    "service-worker.js": "/W-Droge/service-worker.js",
+    "static/css/main.4df656e6.chunk.css.map": "/W-Droge/static/css/main.4df656e6.chunk.css.map",
+    "static/js/2.a5ecab37.chunk.js.LICENSE.txt": "/W-Droge/static/js/2.a5ecab37.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.12aacbe1.js",
+    "static/js/2.a5ecab37.chunk.js",
+    "static/css/main.4df656e6.chunk.css",
+    "static/js/main.a333ce92.chunk.js"
+  ]
+}
