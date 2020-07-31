@@ -1,11 +1,11 @@
 import React from "react";
 import "./LuggageItem.css";
+import LuggageSelected from "./LuggageSelected";
 
 class LuggageItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      item: props.data,
       name: props.data.name,
       inputType: props.data.inputType,
       value: props.data.value,
@@ -20,23 +20,29 @@ class LuggageItem extends React.Component {
     this.setState({ value: e.target.value });
   }
 
-  add() {
-    console.log("dodaję:");
-    console.log(this.state);
+  add(state) {
+    console.log(state);
+
+    LuggageSelected.forEach(function(item){
+      if (item.name == state.name) console.log('już mam to');
+    });
+
+    LuggageSelected.push(this.state);
+    //console.log(LuggageSelected);
   }
 
   render() {
     return (
       <div className="luggageItem">
-        <div className="luggageTitle">{this.state.item.name}</div>
-        {this.state.item.inputType && (
+        <div className="luggageTitle">{this.state.name}</div>
+        {this.state.inputType && (
           <input
-            type={this.state.item.inputType}
-            defaultValue={this.state.item.value}
+            type={this.state.inputType}
+            defaultValue={this.state.value}
             onChange={this.setValue}
           />
         )}
-        <button onClick={this.add}>dodaj</button>
+        <button onClick={this.add(this.state)}>dodaj</button>
       </div>
     );
   }

@@ -1,5 +1,3 @@
-import "./App.css";
-
 const LuggageData = [
   {
     category: "elektronika",
@@ -38,6 +36,19 @@ const LuggageData = [
     },
     { name: "kanapki" },
     { name: "konserwa"}
+    ],
+  },
+  {
+    category: "inne",
+    things: [
+    {
+      name: "książka",
+      inputType : "text",
+      value: "Potop",
+    },
+    { name: "bilet" },
+    { name: "dokumenty"},
+    { name: "krem z filtrem"}
     ],
   },
   ];
