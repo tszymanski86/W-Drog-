@@ -1,21 +1,51 @@
 import React from "react";
 import "./LuggageItem.css";
+import LuggageSelected from "./LuggageSelected";
 
-function LuggageItem(props) {
-  const item = props.data;
+class LuggageItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: props.data.name,
+      inputType: props.data.inputType,
+      value: props.data.value,
+      category: props.category,
+    };
 
-  function dzialaj(){
-    console.log('działam');
+    this.add = this.add.bind(this);
+    this.setValue = this.setValue.bind(this);
   }
 
-  return (
-    <div className="luggageItem">
-      <div className="luggageTitle">
-        {item.name}
+  setValue(e) {
+    this.setState({ value: e.target.value });
+  }
+
+  add(state) {
+    console.log(state);
+
+    LuggageSelected.forEach(function(item){
+      if (item.name == state.name) console.log('już mam to');
+    });
+
+    LuggageSelected.push(this.state);
+    //console.log(LuggageSelected);
+  }
+
+  render() {
+    return (
+      <div className="luggageItem">
+        <div className="luggageTitle">{this.state.name}</div>
+        {this.state.inputType && (
+          <input
+            type={this.state.inputType}
+            defaultValue={this.state.value}
+            onChange={this.setValue}
+          />
+        )}
+        <button onClick={this.add(this.state)}>dodaj</button>
       </div>
-      {item.inputType && <input type={item.inputType} defaultValue={item.value}/>}
-    </div>
-  );
+    );
+  }
 }
 
 export default LuggageItem;
