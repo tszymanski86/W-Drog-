@@ -1,46 +1,54 @@
-import React from "react";
+import React, { Component } from "react";
 import "./Main.css";
 import LuggageCategory from "./LuggageCategory";
 import LuggageData from "./LuggageData";
 
-function Main() {
-  function showLuggageSection(){
-    document.getElementById("things").classList.add("hidden");
-    document.getElementById("luggage").classList.remove("hidden");
+class Main extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      formVisible: true,
+    };
   }
 
-  function showAddSection(){
-    document.getElementById("things").classList.remove("hidden");
-    document.getElementById("luggage").classList.add("hidden");
+  showLuggageSection = () => {
+    this.setState({formVisible: false});
   }
 
-  return (
-    <main>
-      <div id="viewButtons">
-        <button id="addSectionButton" onClick={showAddSection}>DODAJ DO BAGAŻU</button>
-        <button id="luggageSectionButton" onClick={showLuggageSection}>MÓJ BAGAŻ</button>
+  showAddSection = () => {
+    this.setState({formVisible: true});
+  }
+
+  render() {
+    return (
+      <main>
+        <div id="viewButtons">
+          <button id="addSectionButton" onClick={this.showAddSection}>DODAJ DO BAGAŻU</button>
+          <button id="luggageSectionButton" onClick={this.showLuggageSection}>MÓJ BAGAŻ</button>
+          <div style={{ clear: "both" }}></div>
+        </div>
+  
+        <div className={`work${this.state.formVisible ? '' : ' hidden'}`}>
+          <div className="sectionTitle">
+            DODAJ DO BAGAŻ
+          </div>
+          {LuggageData.map((item, i) => (
+            <ul key={i}>
+              <LuggageCategory data={item} />
+            </ul>
+          ))}
+        </div>
+  
+        <div className={`work${this.state.formVisible ? ' hidden' : ''}`}>
+          <div className="sectionTitle">
+            MÓJ BAGAŻ
+          </div>
+        </div>
         <div style={{ clear: "both" }}></div>
-      </div>
-
-      <div id="things" className="work">
-        <div className="sectionTitle">
-          DODAJ DO BAGAŻ
-        </div>
-        {LuggageData.map((item, i) => (
-          <ul key={i}>
-            <LuggageCategory data={item} />
-          </ul>
-        ))}
-      </div>
-
-      <div id="luggage" className="work hidden">
-        <div className="sectionTitle">
-          MÓJ BAGAŻ
-        </div>
-      </div>
-      <div style={{ clear: "both" }}></div>
-    </main>
-  );
+      </main>
+    );
+  }
 }
 
 export default Main;
