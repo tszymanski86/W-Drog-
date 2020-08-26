@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Main.css";
 import LuggageCategory from "./LuggageCategory";
-import LuggageData from "./LuggageData";
+import LUGGAGE_DATA from "./LuggageData";
 
 class Main extends Component {
 
@@ -33,7 +33,7 @@ class Main extends Component {
           <div className="sectionTitle">
             DODAJ DO BAGAŻ
           </div>
-          {LuggageData.map((item, i) => (
+          {LUGGAGE_DATA.map((item, i) => (
             <ul key={i}>
               <LuggageCategory data={item} />
             </ul>

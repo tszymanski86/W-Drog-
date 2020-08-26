@@ -6,10 +6,7 @@ class LuggageItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: props.data.name,
-      inputType: props.data.inputType,
       value: props.data.value,
-      category: props.category,
     };
 
     this.add = this.add.bind(this);
@@ -20,29 +17,23 @@ class LuggageItem extends React.Component {
     this.setState({ value: e.target.value });
   }
 
-  add(state) {
-    console.log(state);
-
-    LuggageSelected.forEach(function(item){
-      if (item.name == state.name) console.log('już mam to');
-    });
-
-    LuggageSelected.push(this.state);
-    //console.log(LuggageSelected);
+  add() {
+    console.log('działam');
   }
 
   render() {
+    const item = this.props.data;
     return (
       <div className="luggageItem">
-        <div className="luggageTitle">{this.state.name}</div>
-        {this.state.inputType && (
+        <div className="luggageTitle">{item.name}</div>
+        {item.inputType && (
           <input
-            type={this.state.inputType}
-            defaultValue={this.state.value}
+            type={item.inputType}
+            value={this.state.value}
             onChange={this.setValue}
           />
         )}
-        <button onClick={this.add(this.state)}>dodaj</button>
+        <button onClick={this.add}>dodaj</button>
       </div>
     );
   }

@@ -1,4 +1,4 @@
-const LuggageData = [
+const LUGGAGE_DATA = [
   {
     category: "elektronika",
     things: [
@@ -53,4 +53,4 @@ const LuggageData = [
   },
   ];
 
-export default LuggageData;
+export default LUGGAGE_DATA;
