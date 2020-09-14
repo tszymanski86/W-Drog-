@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import "./Header.css";
 
-const Header = (props) => {
+function Header() {
   return (
     <header>
       <h1 className="logo">W DROGĘ!</h1>
