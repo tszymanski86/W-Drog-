@@ -1,3 +1,3 @@
 const LuggageSelected = [];
   
-  export default LuggageSelected;
+export default LuggageSelected;

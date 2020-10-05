@@ -2,13 +2,16 @@ import React, { Component } from "react";
 import "./Main.css";
 import LuggageCategory from "./LuggageCategory";
 import LUGGAGE_DATA from "./LuggageData";
+import CheckedLuggageCategory from "./CheckedLuggageCategory";
+import CHECKED_LUGGAGE from "./CheckedLuggage";
 
-class Main extends Component {
+class Main extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
       formVisible: true,
+      checkedList : CHECKED_LUGGAGE
     };
   }
 
@@ -20,7 +23,12 @@ class Main extends Component {
     this.setState({formVisible: true});
   }
 
+  changeList = () => {
+    this.setState({checkedList : CHECKED_LUGGAGE});
+  }
+
   render() {
+
     return (
       <main>
         <div id="viewButtons">
@@ -29,21 +37,28 @@ class Main extends Component {
           <div style={{ clear: "both" }}></div>
         </div>
   
-        <div className={`work${this.state.formVisible ? '' : ' hidden'}`}>
+        <div id="things" className={`work${this.state.formVisible ? '' : ' hidden'}`}>
           <div className="sectionTitle">
             DODAJ DO BAGAŻ
           </div>
           {LUGGAGE_DATA.map((item, i) => (
             <ul key={i}>
-              <LuggageCategory data={item} />
+              <LuggageCategory 
+              data={item}
+              changeList={this.changeList} />
             </ul>
           ))}
         </div>
   
-        <div className={`work${this.state.formVisible ? ' hidden' : ''}`}>
+        <div id="luggage" className={`work${this.state.formVisible ? ' hidden' : ''}`}>
           <div className="sectionTitle">
             MÓJ BAGAŻ
           </div>
+            {this.state.checkedList.map((item, i) => (
+              <ul key={i}>
+                <CheckedLuggageCategory data = {item} />
+              </ul>
+            ))}
         </div>
         <div style={{ clear: "both" }}></div>
       </main>
