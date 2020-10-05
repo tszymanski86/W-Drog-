@@ -1,0 +1,12 @@
+.luggageItem {
+    margin: 5px;
+    padding: 10px;
+    background-color: rgb(240, 205, 165);
+    border-radius: 5px;
+    width: 80%;
+}
+
+.luggageItem:hover {
+    background-color: rgb(206, 170, 135);
+}
+

@@ -1,0 +1,77 @@
+body {
+	font-family: "Open Sans", sans-serif;
+	font-size: 17px;
+	margin: auto;
+	background-color: #d3d3d3;
+	color: black;
+	max-width: 1600px;
+}
+
+main {
+	height: 100%;
+	background-color: peru;
+}
+
+/* viewButtons */
+#viewButtons button {
+	display: none;
+}
+
+.work {
+	float: left;
+	overflow: hidden;
+}
+
+/* things */
+
+#things {
+	width: 50%;
+	background-color: burlywood;
+}
+
+/* luggage */
+
+#luggage {
+	width: 50%;
+	height: 50%;
+	background-color: peru;
+}
+
+#info {
+	margin: 20px;
+}
+
+@media only screen and (max-width: 650px) {
+	/* viewButtons */
+
+	#viewButtons button {
+	display: block;
+	border: none;
+	padding: 5px;
+	float: left;
+	}
+
+	#addSectionButton {
+	background-color: burlywood;
+	}
+
+	#luggageSectionButton {
+	background-color: peru;
+	}
+
+	.hidden {
+	display: none;
+	}
+
+	.work {
+	clear: both;
+	}
+
+	#things {
+	width: 100%;
+	}
+
+	#luggage {
+	width: 100%;
+	}
+}
