@@ -7,6 +7,10 @@ class CheckedLuggageCategory extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  changeList = () => {
+    this.props.changeList();
+  }
   
   render() {
     const category = this.props.data.category;
@@ -16,7 +20,10 @@ class CheckedLuggageCategory extends React.Component {
         <div className="categoryName">{category}</div>
         {things.map((item, i) => (
         <li key={i}>
-          <CheckedThing data={item} category={category} />
+          <CheckedThing
+            data={item}
+             category={category}
+             changeList={this.changeList} />
         </li>
         ))}
       </>
