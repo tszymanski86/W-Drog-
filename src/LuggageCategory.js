@@ -1,6 +1,7 @@
 import React from "react";
-import "./App.css";
 import LuggageItem from "./LuggageItem";
+import "./App.css";
+
 
 class LuggageCategory extends React.Component {
   constructor(props) {
@@ -15,15 +16,23 @@ class LuggageCategory extends React.Component {
     const content = this.props.data;
     const category = content.category;
 
+    const checkedCategory = this.props.checkedCategory;
+    let usedThings = [];
+    if (checkedCategory) {
+      usedThings = checkedCategory.things.map(thing => thing.name);
+    }
+
     return (
       <>
         <div className="categoryName">{category}</div>
         {content.things.map((item, i) => (
           <li key={i}>
             <LuggageItem
-              data={item}
+              item={item}
+              disabled={usedThings.includes(item.name)}
               category={category}
-              changeList={this.changeList} />
+              changeList={this.changeList}
+              onAddToCheckedList={this.props.onAddToCheckedList} />
           </li>
         ))}
       </>
