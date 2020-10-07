@@ -27,7 +27,7 @@ class LuggageItem extends React.Component {
   addToCheckedList = () => {
     const data = {
       category: this.props.category,
-      thing: this.props.item,
+      thing: Object.assign({}, this.props.item, {value: this.state.value}),
     };
     this.props.onAddToCheckedList(data);
 
