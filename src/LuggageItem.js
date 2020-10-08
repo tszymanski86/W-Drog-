@@ -30,48 +30,6 @@ class LuggageItem extends React.Component {
       thing: Object.assign({}, this.props.item, {value: this.state.value}),
     };
     this.props.onAddToCheckedList(data);
-
-//    const newItem = {
-//      category: this.props.category,
-//      things: [this.props.item],
-//    };
-//
-//    if (this.state.value !== undefined) newItem.things[0].value = this.state.value;
-//
-//    const itemIndex = CHECKED_LUGGAGE.findIndex((el) => {
-//      return el.category === newItem.category;
-//    });
-//
-//    if (itemIndex !== -1) {
-//      console.log("jest kategoria");
-//      const thingIndex = CHECKED_LUGGAGE[itemIndex].things.findIndex((el) => {
-//        return el.name === newItem.things[0].name;
-//      });
-//
-//      if (thingIndex === -1) {
-//        console.log("dodaję przedmiot");
-//        CHECKED_LUGGAGE[itemIndex].things.push(newItem.things[0]);
-//        this.changeList();
-//      } else {
-//        console.log("przedmiot już jest");
-//        console.log(newItem.things[0].value);
-//        console.log(CHECKED_LUGGAGE[itemIndex].things[thingIndex].value);
-//        if (
-//          newItem.things[0].value !==
-//          CHECKED_LUGGAGE[itemIndex].things[thingIndex].value
-//        ) {
-//          console.log("aktualizuję wartość");//nie działa,
-//          CHECKED_LUGGAGE[itemIndex].things[thingIndex].value =
-//            Number(newItem.things[0].value);
-//          this.changeList(); //czemu nie działa?????????????????????
-//        }
-//      }
-//    } else {
-//      console.log("nie ma kategorii, dodaję przedmiot");
-//      CHECKED_LUGGAGE.push(newItem);
-//      this.changeList();
-//    }
-//    console.log(CHECKED_LUGGAGE);
   };
 
   render() {
