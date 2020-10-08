@@ -1,39 +1,51 @@
 import React from "react";
+import CHECKED_LUGGAGE from "./CheckedLuggage";
 import "./LuggageItem.css";
-import LuggageSelected from "./LuggageSelected";
+
 
 class LuggageItem extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
-      value: props.data.value,
+      value: props.item.value,
     };
-
-    this.add = this.add.bind(this);
     this.setValue = this.setValue.bind(this);
+  }
+
+  changeList(){
+    this.props.changeList();
   }
 
   setValue(e) {
     this.setState({ value: e.target.value });
+    console.log(e.target);
+    console.log(e.target.value);
+    console.log(this.state.value);
   }
 
-  add() {
-    console.log('działam');
-  }
+  addToCheckedList = () => {
+    const data = {
+      category: this.props.category,
+      thing: Object.assign({}, this.props.item, {value: this.state.value}),
+    };
+    this.props.onAddToCheckedList(data);
+  };
 
   render() {
-    const item = this.props.data;
+    const { disabled, item } = this.props;
     return (
       <div className="luggageItem">
         <div className="luggageTitle">{item.name}</div>
         {item.inputType && (
           <input
+            disabled={disabled}
             type={item.inputType}
             value={this.state.value}
             onChange={this.setValue}
           />
         )}
-        <button onClick={this.add}>dodaj</button>
+        <button disabled={disabled} onClick={this.addToCheckedList}>dodaj</button>
       </div>
     );
   }
