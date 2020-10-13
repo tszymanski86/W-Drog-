@@ -24,7 +24,7 @@ class CheckedThing extends React.Component {
     const categoryIndex = CHECKED_LUGGAGE.findIndex((el) => {
       return el.category === category;
     });
-    if (CHECKED_LUGGAGE[categoryIndex].things.length == 1) {
+    if (CHECKED_LUGGAGE[categoryIndex].things.length === 1) {
       CHECKED_LUGGAGE.splice(categoryIndex, 1);
       this.changeList();
     } else {
@@ -35,6 +35,12 @@ class CheckedThing extends React.Component {
       this.changeList();
     }
   };
+
+  removeFromCheckedList = () => {
+    const category = this.props.category;
+    const name = this.props.data.name;
+    this.props.removeFromCheckedList({category, name});
+  }
 
   render() {
     const item = this.props.data;
@@ -48,7 +54,7 @@ class CheckedThing extends React.Component {
             onChange={this.setValue}
           />
         )}
-        <button onClick={this.deleteThis}>usuń</button>
+        <button onClick={this.removeFromCheckedList}>usuń</button>
       </div>
     );
   }

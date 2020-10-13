@@ -7,11 +7,11 @@ class LuggageCategory extends React.Component {
   constructor(props) {
     super(props);
   }
-
+/*
   changeList = () => {
     this.props.changeList();
   }
-
+*/
   render() {
     const content = this.props.data;
     const category = content.category;
@@ -31,7 +31,7 @@ class LuggageCategory extends React.Component {
               item={item}
               disabled={usedThings.includes(item.name)}
               category={category}
-              changeList={this.changeList}
+              /*changeList={this.changeList}*/
               onAddToCheckedList={this.props.onAddToCheckedList} />
           </li>
         ))}

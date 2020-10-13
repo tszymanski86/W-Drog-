@@ -24,10 +24,6 @@ class Main extends React.Component {
     this.setState({addSectionVisible: true});
   }
 
-  changeList = () => {
-    this.setState({checkedList : CHECKED_LUGGAGE});
-  }
-
   handleAddToCheckedList = (data) => {
     this.setState(prevState => {
       const categories = prevState.checkedList.map(category => category.category);
@@ -50,6 +46,29 @@ class Main extends React.Component {
       }
     });
   }
+
+  deleteFromCheckedList = (data) => {
+    const categoryToFind = data.category;
+    const thingToFind = data.name;
+    const newState = this.state.checkedList;
+    const categoryIndex = newState.findIndex((catItem) => {
+      return catItem.category === categoryToFind;
+    });
+
+    if (newState[categoryIndex].things.length === 1) {
+      newState.splice(categoryIndex, 1);
+    } else {
+      const thingIndex = newState[categoryIndex].things.findIndex((thing) => {
+        return thing.name === thingToFind;
+      });
+      newState[categoryIndex].things.splice(thingIndex, 1);
+    }
+
+    this.setState(
+      {checkedList : newState}
+    );
+  }
+
 
   render() {
     return (
@@ -75,7 +94,6 @@ class Main extends React.Component {
             <LuggageCategory
               checkedCategory={this.state.checkedList.filter(category => category.category === item.category)[0] || null}
               data={item}
-              changeList={this.changeList}
               onAddToCheckedList={this.handleAddToCheckedList} />
           </ul>
         ))}
@@ -91,7 +109,9 @@ class Main extends React.Component {
         </div>
           {this.state.checkedList.map((item, i) => (
             <ul key={i}>
-              <CheckedLuggageCategory data={item} />
+              <CheckedLuggageCategory 
+              data={item}
+              removeFromCheckedList={this.deleteFromCheckedList} />
             </ul>
           ))}
       </div>
