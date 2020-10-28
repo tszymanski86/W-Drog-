@@ -4,9 +4,6 @@ import "./App.css";
 
 
 class CheckedLuggageCategory extends React.Component {
-  constructor(props) {
-    super(props);
-  }
  
   render() {
     const content = this.props.data;

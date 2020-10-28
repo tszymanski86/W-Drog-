@@ -13,9 +13,6 @@ class LuggageItem extends React.Component {
   
   setValue = (e) => {
     this.setState({ value: e.target.value });
-    //console.log(e.target);
-    //console.log(e.target.value);
-    //console.log(this.state.value);
   }
 
   addToCheckedList = () => {

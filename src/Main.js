@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import CHECKED_LUGGAGE from "./CheckedLuggage";
 import CheckedLuggageCategory from "./CheckedLuggageCategory";
 import LuggageCategory from "./LuggageCategory";
@@ -26,7 +26,7 @@ class Main extends React.Component {
 
   handleAddToCheckedList = (data) => {
     this.setState(prevState => {
-      const categories = prevState.checkedList.map(category => category.category);
+      const categories = prevState.checkedList.map(item => item.category);
       if (!categories.includes(data.category)) {
         return {
           checkedList: [...prevState.checkedList, {category: data.category, things: [data.thing, ]}],
