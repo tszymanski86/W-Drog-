@@ -1,23 +1,24 @@
 import React from "react";
-import "./App.css";
 import CheckedThing from "./CheckedThing";
+import "./App.css";
 
 
 class CheckedLuggageCategory extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  
+ 
   render() {
-    const category = this.props.data.category;
-    const things = this.props.data.things;
+    const content = this.props.data;
+    const category = content.category;
+
     return (
       <>
         <div className="categoryName">{category}</div>
-        {things.map((item, i) => (
-        <li key={i}>
-          <CheckedThing data={item} category={category} />
-        </li>
+        {content.things.map((item, i) => (
+          <li key={`${item.name}_${i}`}>
+            <CheckedThing
+              data={item}
+              category={category}
+              removeFromCheckedList={this.props.removeFromCheckedList} />
+          </li>
         ))}
       </>
     );

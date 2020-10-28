@@ -11,9 +11,17 @@ class CheckedThing extends React.Component {
 
   setValue = (e) => {
     this.setState({ value: e.target.value });
+  };
+
+  changeList() {
+    this.props.changeList();
   }
 
-  add = () => {};
+  removeFromCheckedList = () => {
+    const category = this.props.category;
+    const name = this.props.data.name;
+    this.props.removeFromCheckedList({category, name});
+  }
 
   render() {
     const item = this.props.data;
@@ -27,7 +35,7 @@ class CheckedThing extends React.Component {
             onChange={this.setValue}
           />
         )}
-        <button onClick={this.add}>guzik</button>
+        <button onClick={this.removeFromCheckedList}>usuń</button>
       </div>
     );
   }

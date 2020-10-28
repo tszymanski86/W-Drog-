@@ -10,17 +10,17 @@ const Header = (props) => {
       <nav>
         <ul className="destination">
           <li>
-            <a id="destination0" href="#" className="active">
+            <a id="destination0" href="/" className="active">
               Egipt
             </a>
           </li>
           <li>
-            <a id="destination1" href="#">
+            <a id="destination1" href="/">
               Kraków
             </a>
           </li>
           <li>
-            <a id="destination2" href="#">
+            <a id="destination2" href="/">
               góry
             </a>
           </li>

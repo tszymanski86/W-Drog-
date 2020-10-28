@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import CHECKED_LUGGAGE from "./CheckedLuggage";
 import CheckedLuggageCategory from "./CheckedLuggageCategory";
 import LuggageCategory from "./LuggageCategory";
@@ -24,13 +24,9 @@ class Main extends React.Component {
     this.setState({addSectionVisible: true});
   }
 
-  changeList = () => {
-    this.setState({checkedList : CHECKED_LUGGAGE});
-  }
-
   handleAddToCheckedList = (data) => {
     this.setState(prevState => {
-      const categories = prevState.checkedList.map(category => category.category);
+      const categories = prevState.checkedList.map(item => item.category);
       if (!categories.includes(data.category)) {
         return {
           checkedList: [...prevState.checkedList, {category: data.category, things: [data.thing, ]}],
@@ -38,18 +34,36 @@ class Main extends React.Component {
       }
 
       return {
-        checkedList: prevState.checkedList.map(category => {
-          if (data.category === category.category) {
-            const checkedThings = category.things.map(thing => thing.name);
+        checkedList: prevState.checkedList.map(item => {
+          if (data.category === item.category) {
+            const checkedThings = item.things.map(thing => thing.name);
             if (!checkedThings.includes(data.thing.name)) {
-              category.things = [...category.things, data.thing];
+              item.things = [...item.things, data.thing];
             }
           }
-          return category
+          return item
         }),
       }
     });
   }
+
+  deleteFromCheckedList = (data) => {
+    this.setState(prevState => ({
+      checkedList: prevState.checkedList.filter(item => {
+        if (item.category === data.category) {
+          item.things = item.things.filter(thing => thing.name !== data.name);
+          if (item.things.length) {
+            return item
+          } else {
+            return null
+          }
+        } else {
+          return item
+        }
+      })
+    }));
+  }
+
 
   render() {
     return (
@@ -75,7 +89,6 @@ class Main extends React.Component {
             <LuggageCategory
               checkedCategory={this.state.checkedList.filter(category => category.category === item.category)[0] || null}
               data={item}
-              changeList={this.changeList}
               onAddToCheckedList={this.handleAddToCheckedList} />
           </ul>
         ))}
@@ -90,8 +103,10 @@ class Main extends React.Component {
           MÓJ BAGAŻ
         </div>
           {this.state.checkedList.map((item, i) => (
-            <ul key={i}>
-              <CheckedLuggageCategory data={item} />
+            <ul key={`${item.category}_${i}`}>
+              <CheckedLuggageCategory
+              data={item}
+              removeFromCheckedList={this.deleteFromCheckedList} />
             </ul>
           ))}
       </div>

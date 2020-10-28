@@ -1,5 +1,4 @@
 import React from "react";
-import CHECKED_LUGGAGE from "./CheckedLuggage";
 import "./LuggageItem.css";
 
 
@@ -10,18 +9,10 @@ class LuggageItem extends React.Component {
     this.state = {
       value: props.item.value,
     };
-    this.setValue = this.setValue.bind(this);
   }
-
-  changeList(){
-    this.props.changeList();
-  }
-
-  setValue(e) {
+  
+  setValue = (e) => {
     this.setState({ value: e.target.value });
-    console.log(e.target);
-    console.log(e.target.value);
-    console.log(this.state.value);
   }
 
   addToCheckedList = () => {
