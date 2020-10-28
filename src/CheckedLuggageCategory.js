@@ -16,7 +16,7 @@ class CheckedLuggageCategory extends React.Component {
       <>
         <div className="categoryName">{category}</div>
         {content.things.map((item, i) => (
-          <li key={i}>
+          <li key={`${item.name}_${i}`}>
             <CheckedThing
               data={item}
               category={category}

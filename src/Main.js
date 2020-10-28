@@ -34,39 +34,34 @@ class Main extends React.Component {
       }
 
       return {
-        checkedList: prevState.checkedList.map(category => {
-          if (data.category === category.category) {
-            const checkedThings = category.things.map(thing => thing.name);
+        checkedList: prevState.checkedList.map(item => {
+          if (data.category === item.category) {
+            const checkedThings = item.things.map(thing => thing.name);
             if (!checkedThings.includes(data.thing.name)) {
-              category.things = [...category.things, data.thing];
+              item.things = [...item.things, data.thing];
             }
           }
-          return category
+          return item
         }),
       }
     });
   }
 
   deleteFromCheckedList = (data) => {
-    const categoryToFind = data.category;
-    const thingToFind = data.name;
-    const newState = this.state.checkedList;
-    const categoryIndex = newState.findIndex((catItem) => {
-      return catItem.category === categoryToFind;
-    });
-
-    if (newState[categoryIndex].things.length === 1) {
-      newState.splice(categoryIndex, 1);
-    } else {
-      const thingIndex = newState[categoryIndex].things.findIndex((thing) => {
-        return thing.name === thingToFind;
-      });
-      newState[categoryIndex].things.splice(thingIndex, 1);
-    }
-
-    this.setState(
-      {checkedList : newState}
-    );
+    this.setState(prevState => ({
+      checkedList: prevState.checkedList.filter(item => {
+        if (item.category === data.category) {
+          item.things = item.things.filter(thing => thing.name !== data.name);
+          if (item.things.length) {
+            return item
+          } else {
+            return null
+          }
+        } else {
+          return item
+        }
+      })
+    }));
   }
 
 
@@ -108,8 +103,8 @@ class Main extends React.Component {
           MÓJ BAGAŻ
         </div>
           {this.state.checkedList.map((item, i) => (
-            <ul key={i}>
-              <CheckedLuggageCategory 
+            <ul key={`${item.category}_${i}`}>
+              <CheckedLuggageCategory
               data={item}
               removeFromCheckedList={this.deleteFromCheckedList} />
             </ul>
