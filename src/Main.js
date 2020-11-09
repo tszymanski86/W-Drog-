@@ -102,8 +102,8 @@ class Main extends React.Component {
         <div className="sectionTitle">
           MÓJ BAGAŻ
         </div>
-          {this.state.checkedList.map((item, i) => (
-            <ul key={`${item.category}_${i}`}>
+          {this.state.checkedList.map(item => (
+            <ul key={item.category}>
               <CheckedLuggageCategory
               data={item}
               removeFromCheckedList={this.deleteFromCheckedList} />
